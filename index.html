@@ -1,0 +1,226 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krilom Omega-3 | المتجر الرسمي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #ffffff; 
+            margin: 0;
+            overflow-x: hidden;
+        }
+        
+        /* القسم العلوي */
+        .hero-section {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: #f0f7f4;
+        }
+
+        /* الخلفية المتحركة (صورة الطفلة فقط) */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('child-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.35;
+            z-index: 1;
+            animation: gentleZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes gentleZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column; /* للموبايل */
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row; /* للكمبيوتر */
+                justify-content: space-between;
+                align-items: center;
+                height: 100%;
+            }
+        }
+
+        /* صورة الدواء (ثابتة) */
+        .product-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            z-index: 20;
+        }
+
+        @media (min-width: 768px) {
+            .product-container {
+                width: 45%;
+                max-width: 500px;
+                margin: 0;
+            }
+        }
+
+        .product-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+            /* لا يوجد أنيميشن هنا لتبقى ثابتة */
+        }
+
+        .hero-text {
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-text {
+                width: 50%;
+                text-align: right;
+                margin-top: 0;
+            }
+        }
+
+        .btn-primary {
+            background-color: #5da384;
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(93, 163, 132, 0.4);
+        }
+
+        .edit-mode [contenteditable="true"] {
+            outline: 2px dashed #5da384;
+            background: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الترويسة -->
+    <header class="absolute top-0 w-full z-50 p-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div id="brandName" contenteditable="true" class="text-xl md:text-2xl font-black text-[#4a866d] bg-white/50 px-4 py-1 rounded-full backdrop-blur-sm">Krilom Omega-3</div>
+            <!-- مكان اللوغو -->
+            <div class="w-12 h-12 bg-white/80 rounded-xl border border-emerald-50 flex items-center justify-center shadow-sm">
+                <i data-lucide="shield-check" class="text-[#5da384] w-6 h-6"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            
+            <!-- صورة المنتج: تظهر أولاً في الموبايل أو على اليمين في الكمبيوتر -->
+            <div class="product-container md:order-2">
+                <img src="image.png" class="product-img" alt="Krilom Bottle">
+            </div>
+
+            <!-- النصوص -->
+            <div class="hero-text md:order-1 space-y-6">
+                <h1 id="mainTitle" contenteditable="true" class="text-4xl md:text-6xl font-black text-slate-800 leading-tight">
+                    ذكاء وتركيز <br><span class="text-[#5da384]">لطفولة مبدعة</span>
+                </h1>
+                <p id="pDesc" contenteditable="true" class="text-lg text-slate-600 max-w-lg mx-auto md:mx-0 font-semibold leading-relaxed">
+                    المكمل الغذائي الأول الغني بـ EPA و DHA بنكهة المانجو الطبيعية التي يعشقها الأطفال.
+                </p>
+                <div class="flex flex-col md:flex-row items-center gap-6 pt-4">
+                    <a href="#order" class="btn-primary px-12 py-5 rounded-2xl font-black text-xl w-full md:w-auto text-center transition-transform active:scale-95">
+                        اطلب الآن
+                    </a>
+                    <div class="flex flex-col items-center md:items-end">
+                        <span id="pPrice" contenteditable="true" class="text-3xl font-black text-slate-800">12.75</span>
+                        <span id="pCurr" contenteditable="true" class="text-sm font-bold text-slate-400">دينار أردني</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوائد -->
+    <main class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-8 rounded-[2.5rem] bg-[#f8fafc] border border-slate-100">
+                    <h3 class="text-xl font-black text-[#4a866d] mb-4">دعم نمو الدماغ</h3>
+                    <ul class="space-y-3 font-bold text-slate-600">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> <span id="f1" contenteditable="true">أعلى تركيز لأحماض EPA و DHA الأساسية</span></li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> <span id="f2" contenteditable="true">تحسين الذاكرة وسرعة الاستيعاب</span></li>
+                    </ul>
+                </div>
+                <div class="p-8 rounded-[2.5rem] bg-emerald-50/50 border border-emerald-100">
+                    <h3 class="text-xl font-black text-slate-700 mb-4">طعم يحبه طفلك</h3>
+                    <ul class="space-y-3 font-bold text-slate-600">
+                        <li class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i> <span id="f3" contenteditable="true">مانجو طبيعي 100% بدون طعم سمك</span></li>
+                        <li class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i> <span id="f4" contenteditable="true">سهل الهضم ومناسب للاستخدام اليومي</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- فورم الطلب -->
+            <div id="order" class="mt-20 max-w-lg mx-auto bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-50">
+                <h2 class="text-2xl font-black text-center mb-8">معلومات التوصيل</h2>
+                <form id="waForm" class="space-y-4">
+                    <input type="text" id="custName" required placeholder="الاسم الكامل" class="w-full p-5 rounded-2xl bg-slate-50 border-none outline-none font-bold focus:ring-2 ring-emerald-400">
+                    <input type="text" id="custLoc" required placeholder="المدينة والعنوان" class="w-full p-5 rounded-2xl bg-slate-50 border-none outline-none font-bold focus:ring-2 ring-emerald-400">
+                    <button type="submit" class="w-full btn-primary py-6 rounded-2xl font-black text-xl shadow-lg">إرسال الطلب واتساب</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- زر التعديل السري (3 ضغطات) -->
+    <div onclick="adminCheck()" class="fixed bottom-4 left-4 w-8 h-8 opacity-0 cursor-pointer z-[100]"></div>
+
+    <script>
+        lucide.createIcons();
+        let clicks = 0;
+        function adminCheck() {
+            clicks++;
+            if(clicks >= 3) {
+                document.body.classList.toggle('edit-mode');
+                const ids = ['brandName', 'mainTitle', 'pPrice', 'pCurr', 'pDesc', 'f1', 'f2', 'f3', 'f4'];
+                ids.forEach(id => {
+                    const el = document.getElementById(id);
+                    el.contentEditable = el.contentEditable === "true" ? "false" : "true";
+                });
+                alert(document.body.classList.contains('edit-mode') ? "نمط التعديل نشط" : "تم إيقاف التعديل");
+                clicks = 0;
+            }
+        }
+
+        document.getElementById('waForm').onsubmit = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const loc = document.getElementById('custLoc').value;
+            const msg = `طلب جديد لـ Krilom Omega-3:\nالاسم: ${name}\nالعنوان: ${loc}`;
+            window.open(`https://wa.me/962797625692?text=${encodeURIComponent(msg)}`, '_blank');
+        };
+    </script>
+</body>
+</html>
+
+```
